@@ -26,6 +26,5 @@ F:\Side Bish\Blink of an Eye\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
 F:\Side Bish\Blink of an Eye\Temp\bin\Debug\UnityEngine.Analytics.xml
 F:\Side Bish\Blink of an Eye\Temp\bin\Debug\UnityEngine.HoloLens.xml
 F:\Side Bish\Blink of an Eye\Temp\bin\Debug\UnityEngine.VR.xml
-F:\Side Bish\Blink of an Eye\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 F:\Side Bish\Blink of an Eye\obj\Debug\Assembly-CSharp-firstpass.dll
 F:\Side Bish\Blink of an Eye\obj\Debug\Assembly-CSharp-firstpass.pdb

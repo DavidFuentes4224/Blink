@@ -6,10 +6,11 @@ public class FollowCamera : MonoBehaviour {
     public Transform target;
     public float horizontalMovement;
     public float verticalMovement;
+    public Player player;
 
 	// Use this for initialization
 	void Start () {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = player.pmRef.transform;
 	}
 	
 	// Update is called once per frame
@@ -30,5 +31,10 @@ public class FollowCamera : MonoBehaviour {
     {
         Vector2 position = new Vector2(t.position.x, t.position.y);
         return position;
+    }
+
+    public void setTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 }

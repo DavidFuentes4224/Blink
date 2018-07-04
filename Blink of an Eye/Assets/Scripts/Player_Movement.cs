@@ -8,15 +8,14 @@ public class Player_Movement : MonoBehaviour {
     public float speed;
     public float acceleration;
     public float jumpHeight;
-    public float lifeDecay;
     public LayerMask groundLayer;
-    public float life = 100;
     public float offset;
 
     private float currentSpeed;
     private float targetSpeed;
     private Vector2 amountToMove;
     private bool jumped;
+    private bool controlled;
 
     private Animator Eyes;
     private PlayerPhysics playerPhysics;
@@ -29,34 +28,40 @@ public class Player_Movement : MonoBehaviour {
         trail = this.GetComponent<TrailRenderer>();
         body = this.GetComponent<Rigidbody2D>();
 
-        Eyes = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
-        Eyes.SetBool("_isOpen", true);
+        //Eyes = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
+        //Eyes.SetBool("_isOpen", true);
         Color color = new Color(Random.value, Random.value, Random.value, 1.0f);
         trail.startColor = color;
         trail.endColor = color;
-        
+        controlled = true;
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Vertical") && IsGrounded())
+        if (controlled)
         {
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100 * jumpHeight));
+            if (Input.GetButtonDown("Vertical") && IsGrounded())
+            {
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100 * jumpHeight));
 
+            }
         }
         
     }
 
 	void FixedUpdate() {
-        targetSpeed = Input.GetAxisRaw("Horizontal") * speed;
-        currentSpeed = IncrementTowards(currentSpeed, targetSpeed, acceleration);
+        if (controlled)
+        {
+            targetSpeed = Input.GetAxisRaw("Horizontal") * speed;
+            currentSpeed = IncrementTowards(currentSpeed, targetSpeed, acceleration);
 
-        amountToMove = new Vector2(currentSpeed, 0);
+            amountToMove = new Vector2(currentSpeed, 0);
 
-        
 
-        playerPhysics.Move(amountToMove * Time.deltaTime);
+
+            playerPhysics.Move(amountToMove * Time.deltaTime);
+        }
     }
 
     private float IncrementTowards(float n, float target, float accl)
@@ -94,4 +99,24 @@ public class Player_Movement : MonoBehaviour {
 
         return false;
     }
+
+    public void Kill()
+    {
+        body.velocity = new Vector2(0, 0);
+        body.constraints = RigidbodyConstraints2D.FreezeAll;
+        this.controlled = false;
+        this.GetComponent<Collider2D>().enabled = false;
+        Color color = this.GetComponent<SpriteRenderer>().color;
+        color.a -= 0.75f;
+        this.GetComponent<SpriteRenderer>().color = color;
+		StartCoroutine ("SelfDestruct");
+    }
+
+	IEnumerator SelfDestruct()
+	{
+		Debug.Log ("Destory");
+		yield return new WaitForSeconds (10.0f);
+		Destroy (this.gameObject);
+	}
+		
 }
