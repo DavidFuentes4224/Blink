@@ -1,0 +1,160 @@
+Mono path[0] = 'F:/Side Bish/Blink Builds/Debug.0.0.2_Data/Managed'
+Mono path[1] = 'F:/Side Bish/Blink Builds/Debug.0.0.2_Data/Mono'
+Mono config path = 'F:/Side Bish/Blink Builds/Debug.0.0.2_Data/Mono/etc'
+PlayerConnection initialized from F:/Side Bish/Blink Builds/Debug.0.0.2_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55004
+Multi-casting "[IP] 10.0.0.116 [Port] 55004 [Flags] 2 [Guid] 890812284 [EditorId] 3440988300 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-VO56GLT) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55004]
+PlayerConnection already initialized - listening to [0.0.0.0:55004]
+Initialize engine version: 5.5.4p4 (e92bef0ab5a4)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   NVIDIA
+    VRAM:     4043 MB
+    Driver:   23.21.13.9101
+Begin MonoManager ReloadAssembly
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.182 seconds
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: F:\Side Bish\Blink Builds\Debug.0.0.2_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1080 60Hz; virtual: 5760x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.008260 ms
+Gravity: -32 Max Jump vel: 16 Double Jump Vel: 10
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.MonoBehaviour:print(Object)
+Player_Body:Start() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:32)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 32)
+
+Destory
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+<SelfDestruct>c__Iterator0:MoveNext() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:99)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(String, Object)
+UnityEngine.MonoBehaviour:StartCoroutine(String) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\MonoBehaviourBindings.gen.cs:75)
+Player_Body:Kill() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:94)
+Player:Kill(Player_Body) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player.cs:31)
+Player_Controller:VerticalCollisions(Vector3&) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Controller.cs:87)
+Player_Controller:Move(Vector3) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Controller.cs:34)
+Player_Body:Update() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:82)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 99)
+
+Gravity: -32 Max Jump vel: 16 Double Jump Vel: 10
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.MonoBehaviour:print(Object)
+Player_Body:Start() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:32)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 32)
+
+Destory
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+<SelfDestruct>c__Iterator0:MoveNext() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:99)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(String, Object)
+UnityEngine.MonoBehaviour:StartCoroutine(String) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\MonoBehaviourBindings.gen.cs:75)
+Player_Body:Kill() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:94)
+Player:Kill(Player_Body) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player.cs:31)
+Player_Controller:VerticalCollisions(Vector3&) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Controller.cs:87)
+Player_Controller:Move(Vector3) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Controller.cs:34)
+Player_Body:Update() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:82)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 99)
+
+Gravity: -32 Max Jump vel: 16 Double Jump Vel: 10
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.MonoBehaviour:print(Object)
+Player_Body:Start() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:32)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 32)
+
+Destory
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+<SelfDestruct>c__Iterator0:MoveNext() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:99)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(String, Object)
+UnityEngine.MonoBehaviour:StartCoroutine(String) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\MonoBehaviourBindings.gen.cs:75)
+Player_Body:Kill() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:94)
+Player:Kill(Player_Body) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player.cs:31)
+Player:Update() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player.cs:25)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 99)
+
+Gravity: -32 Max Jump vel: 16 Double Jump Vel: 10
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.MonoBehaviour:print(Object)
+Player_Body:Start() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:32)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 32)
+
+Destory
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+<SelfDestruct>c__Iterator0:MoveNext() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:99)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(String, Object)
+UnityEngine.MonoBehaviour:StartCoroutine(String) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\MonoBehaviourBindings.gen.cs:75)
+Player_Body:Kill() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:94)
+Player:Kill(Player_Body) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player.cs:31)
+Player_Controller:VerticalCollisions(Vector3&) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Controller.cs:87)
+Player_Controller:Move(Vector3) (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Controller.cs:34)
+Player_Body:Update() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:82)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 99)
+
+Gravity: -32 Max Jump vel: 16 Double Jump Vel: 10
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.MonoBehaviour:print(Object)
+Player_Body:Start() (at F:\Side Bish\Blink of an Eye\Assets\Scripts\Player_Body.cs:32)
+ 
+(Filename: F:/Side Bish/Blink of an Eye/Assets/Scripts/Player_Body.cs Line: 32)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 4f28 -> priority: 1 
+  Thread -> id: 215c -> priority: 1 
+  Thread -> id: ed8 -> priority: 1 
+  Thread -> id: 4d68 -> priority: 1 
