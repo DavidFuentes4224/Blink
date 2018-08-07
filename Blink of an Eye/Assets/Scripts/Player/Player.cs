@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public Player_Body bodyRef;
 
+    //modifiables
     public float life = 100;
     public float lifeDecay;
     public Transform bodyPrefab;
 
     public Level currentLevel;
+
+    //private components
+    Player_Body bodyRef;
+    public List<int> inventory = new List<int>{};
+    //input support
     public TouchButton Jump;
     public TouchButton Left;
     public TouchButton Right;
@@ -45,6 +50,10 @@ public class Player : MonoBehaviour {
         currentLevel.LoadNextLevel(currentLevel.nextLevel);
     }
 
+    public Transform GetBodyRef()
+    {
+        return this.bodyRef.transform;
+    }
     public void SpawnNewBody()
     {
         bodyRef.Kill();
@@ -52,5 +61,18 @@ public class Player : MonoBehaviour {
         bodyRef = prefab.GetComponent<Player_Body>();
         bodyRef.SetButtons(Jump,Left,Right);
         this.life = 100;
+    }
+
+    public void AddToInventory(int doorNumber)
+    {
+        inventory.Add(doorNumber);
+        Door[] doors =  GameObject.FindObjectsOfType<Door>();
+        foreach (Door d in doors)
+        {
+            if(doorNumber == d.number)
+            {
+                d.Unlock();
+            }
+        }
     }
 }

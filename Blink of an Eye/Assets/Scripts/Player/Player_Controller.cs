@@ -18,12 +18,17 @@ public class Player_Controller : MonoBehaviour {
 	public CollisionInfo collisions;
 
 	private Player player;
+	bool controlled;
 
 	// Use this for initialization
 	void Start () {
 		colliderBody= GetComponent<BoxCollider2D>();
 		CalculateRaySpacing();
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+	}
+
+	private void Update() {
+		controlled = gameObject.GetComponent<Player_Body>().GetControlled();
 	}
 
 	public void Move(Vector3 velocity){
@@ -69,17 +74,28 @@ public class Player_Controller : MonoBehaviour {
 				{
 					case 9: //harmful
 						velocity.y = 0;
-						player.SpawnNewBody();
+						if(controlled)
+						{
+							player.SpawnNewBody();
+						}
 						return;
 					case 10: //victory
 						velocity.x = 0;
-						player.Win();
+						if(controlled)
+						{
+							player.Win();
+						}
+						
 						break;
 					case 11: //Enemy_Killable
 						velocity.y = velocity.x = 0;
-						player.SpawnNewBody();
+						if(controlled)
+						{
+							player.SpawnNewBody();
+						}
 						return;
-					default: break;
+					default: 
+						break;
 				}
 			}
 		}
@@ -108,16 +124,30 @@ public class Player_Controller : MonoBehaviour {
 				int hitLayer = hit.collider.gameObject.layer;
 				switch(hitLayer)
 				{
+					case 8:
+						if(!controlled)
+						{
+							velocity.x = 0;
+						}
+						break;
+
 					case 9: //harmful
 						velocity.y = 0;
-						player.SpawnNewBody();
+						velocity.x = 0;
+						if(controlled)
+						{
+							player.SpawnNewBody();
+						}
 						return;
 					case 10: //victory
 						velocity.y = 0;
-						player.Win();
+						if(controlled)
+						{
+							player.Win();
+						}
 						break;
 					case 11: //Enemy_Killable
-						if(directionY == -1) //falling
+						if(directionY == -1 && controlled) //falling
 						{
 							GameObject enemy = hit.transform.gameObject;
 							Destroy(enemy);
@@ -128,18 +158,33 @@ public class Player_Controller : MonoBehaviour {
 						}
 						else{
 							velocity.y = 0;
-							player.SpawnNewBody();
-							return;
-						}
-					case 12: //Platform Horizontal
-						if(directionY == -1)
+							if(controlled)
 						{
-							
-							StateMachine sm =  hit.transform.parent.gameObject.GetComponent<StateMachine>();
-							Debug.Log("Velocity = " + sm.speed);
-							velocity += sm.GetVelocity() * Time.deltaTime;
-							return;
+							player.SpawnNewBody();
 						}
+							return;
+						}					
+						case 12: //Platform Horizontal
+							if(directionY == -1)
+							{
+								
+								StateMachine sm =  hit.transform.gameObject.GetComponent<StateMachine>();
+								//Debug.Log("Velocity = " + sm.speed);
+								velocity += sm.GetVelocity() * Time.deltaTime;
+								return;
+							}
+						break;
+
+					case 14: //Key
+						if(controlled)
+						{
+							player.AddToInventory(hit.transform.gameObject.GetComponent<Key>().DoorNumber);
+							{Destroy(hit.transform.gameObject);}
+							
+						}
+						break;
+					case 16: //Button
+						//hit.transform.gameObject.GetComponent<Button>().isPressed = true;
 						break;
 					default: break;
 				}

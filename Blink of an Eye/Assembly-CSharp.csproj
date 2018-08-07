@@ -57,6 +57,9 @@
      <Compile Include="Assets\Scripts\Enemies\Laser.cs" />
      <Compile Include="Assets\Scripts\Enemies\Rocket.cs" />
      <Compile Include="Assets\Scripts\Enemies\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\Objects\Button.cs" />
+     <Compile Include="Assets\Scripts\Objects\Door.cs" />
+     <Compile Include="Assets\Scripts\Objects\Key.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Body.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Controller.cs" />

@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour {
 	
 	// Use this for initialization
 	private void Start() {
-		target = FindObjectOfType<Player>().bodyRef.transform;
+		target = FindObjectOfType<Player>().GetBodyRef();
 	}
 	
 	// Update is called once per frame

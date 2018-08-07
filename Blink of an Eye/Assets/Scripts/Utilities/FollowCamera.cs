@@ -23,7 +23,7 @@ public class FollowCamera : MonoBehaviour {
     }
 
 	void Update () {
-		target = player.bodyRef.transform;
+		target = player.GetBodyRef();
 	}
 
     void FixedUpdate()

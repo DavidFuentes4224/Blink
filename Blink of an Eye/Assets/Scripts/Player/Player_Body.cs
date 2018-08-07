@@ -14,6 +14,7 @@ public class Player_Body : MonoBehaviour {
 
 	//set-ables
 	public SpriteRenderer eyes;
+	public Sprite eyesClosed;
 
 	//Touch input
 	TouchButton b_Jump;
@@ -32,7 +33,7 @@ public class Player_Body : MonoBehaviour {
 	//private checks
 	bool _canDoubleJump;
 	bool jumpHeldDown = false;
-	bool controlled;
+	public	bool controlled;
 	bool eyeFlip;
 	bool bouncing;
 	
@@ -173,13 +174,14 @@ public class Player_Body : MonoBehaviour {
 
 	 public void Kill()
     {
-        velocity = new Vector2(0, 0);
         this.controlled = false;
-		this.gravity = 0;
-        this.GetComponent<Collider2D>().enabled = false;
+		//this.gravity = 0;
+        //this.GetComponent<Collider2D>().enabled = false;
         Color color = this.GetComponent<SpriteRenderer>().color;
         color.a -= 0.75f;
         this.GetComponent<SpriteRenderer>().color = color;
+		this.gameObject.layer = 13;
+		eyes.sprite = eyesClosed;
 		StartCoroutine ("SelfDestruct");
     }
 
@@ -189,6 +191,9 @@ public class Player_Body : MonoBehaviour {
 		this.bounceHeight = height;
 	}
 
+	public bool GetControlled(){
+		return this.controlled;
+	}
 	public void SetButtons(TouchButton j, TouchButton l, TouchButton r) {
 		{
 			this.b_Jump = j;
@@ -200,6 +205,19 @@ public class Player_Body : MonoBehaviour {
 	IEnumerator SelfDestruct()
 	{
 		Debug.Log ("Destory");
+		while(Mathf.Abs(velocity.x) > 0.1f)
+		{
+			if(velocity.y >= 0)
+			{
+				velocity.y += gravity * Time.deltaTime;
+			}
+			else
+			{
+				velocity.y += 2 * gravity * Time.deltaTime;
+			}
+			velocity.x = Mathf.MoveTowards(velocity.x,0,1 * Time.deltaTime);
+			yield return null;
+		}
 		yield return new WaitForSeconds (10.0f);
 		Destroy (this.gameObject);
 	}
