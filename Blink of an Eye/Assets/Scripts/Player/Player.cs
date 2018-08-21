@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
     public Level currentLevel;
 
     //private components
-    Player_Body bodyRef;
+    public Player_Body bodyRef;
     public List<int> inventory = new List<int>{};
     //input support
     public TouchButton Jump;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     private void Awake() {
         Transform prefab = Instantiate(bodyPrefab,currentLevel.getSpawn(),Quaternion.identity);
         bodyRef = prefab.GetComponent<Player_Body>();
-        bodyRef.SetButtons(Jump,Left,Right);
+        //bodyRef.SetButtons(Jump,Left,Right);
     }
     void Start () {
         FollowCamera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowCamera>();
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.R))
+		if(Input.GetKeyDown(KeyCode.L))
         {
             this.SpawnNewBody();
         }
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
         bodyRef.Kill();
         Transform prefab = Instantiate(bodyPrefab,currentLevel.getSpawn(),Quaternion.identity);
         bodyRef = prefab.GetComponent<Player_Body>();
-        bodyRef.SetButtons(Jump,Left,Right);
+        //bodyRef.SetButtons(Jump,Left,Right);
         this.life = 100;
     }
 

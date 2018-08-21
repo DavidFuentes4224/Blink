@@ -94,6 +94,13 @@ public class Player_Controller : MonoBehaviour {
 							player.SpawnNewBody();
 						}
 						return;
+					case 14: //Key
+					if(controlled)
+					{
+						hit.transform.gameObject.GetComponent<Key>().obj.Activate();
+						Destroy(hit.transform.gameObject);
+					}
+					break;
 					default: 
 						break;
 				}
@@ -114,6 +121,12 @@ public class Player_Controller : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 		
 			if(hit){
+				if(hit.collider.tag == "Through"){
+					if(directionY ==1)
+					{
+						continue;
+					}
+				}
 				velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
 
@@ -124,7 +137,7 @@ public class Player_Controller : MonoBehaviour {
 				int hitLayer = hit.collider.gameObject.layer;
 				switch(hitLayer)
 				{
-					case 8:
+					case 8: //ground
 						if(!controlled)
 						{
 							velocity.x = 0;
@@ -150,6 +163,11 @@ public class Player_Controller : MonoBehaviour {
 						if(directionY == -1 && controlled) //falling
 						{
 							GameObject enemy = hit.transform.gameObject;
+							if(enemy.GetComponent<FallingNumber>())
+							{
+								Debug.Log("Apply Damage Function");
+								FindObjectOfType<Boss_1>().TakeDamage();
+							}
 							Destroy(enemy);
 							Resources.UnloadUnusedAssets();
 							velocity.y = 0;
@@ -159,28 +177,34 @@ public class Player_Controller : MonoBehaviour {
 						else{
 							velocity.y = 0;
 							if(controlled)
-						{
-							player.SpawnNewBody();
-						}
+							{
+								player.SpawnNewBody();
+								GameObject enemy = hit.transform.gameObject;
+								if(enemy.GetComponent<FallingNumber>())
+								{
+									FindObjectOfType<Boss_1>().DecreaseStage();
+								}
+							}
+							
 							return;
 						}					
 						case 12: //Platform Horizontal
 							if(directionY == -1)
 							{
-								
+								if(hit.transform.gameObject.GetComponent<StateMachine>())
+								{
 								StateMachine sm =  hit.transform.gameObject.GetComponent<StateMachine>();
 								//Debug.Log("Velocity = " + sm.speed);
 								velocity += sm.GetVelocity() * Time.deltaTime;
+								}
 								return;
 							}
 						break;
-
 					case 14: //Key
 						if(controlled)
 						{
-							player.AddToInventory(hit.transform.gameObject.GetComponent<Key>().DoorNumber);
-							{Destroy(hit.transform.gameObject);}
-							
+							hit.transform.gameObject.GetComponent<Key>().obj.Activate();
+							Destroy(hit.transform.gameObject);
 						}
 						break;
 					case 16: //Button

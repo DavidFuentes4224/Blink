@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class Door : ActivateObject {
 
 	//manips
 	public int number;
 	//privs
 	bool unlocked;
-	public Player player;
+	Player player;
 
 	// Use this for initialization
 	private void Awake() {
@@ -43,5 +43,13 @@ public class Door : MonoBehaviour {
 		Color doorColor = this.gameObject.GetComponent<SpriteRenderer>().color;
 		doorColor.a = 0.25f;
 		this.gameObject.GetComponent<SpriteRenderer>().color = doorColor;
+	}
+
+	public override void Activate(){
+		this.Unlock();
+	}
+
+	public override void Deactivate(){
+		this.Lock();
 	}
 }

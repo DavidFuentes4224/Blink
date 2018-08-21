@@ -16,10 +16,6 @@ public class Player_Body : MonoBehaviour {
 	public SpriteRenderer eyes;
 	public Sprite eyesClosed;
 
-	//Touch input
-	TouchButton b_Jump;
-	TouchButton b_Left;
-	TouchButton b_Right;
 
 	//private dependacies
 	float gravity;
@@ -31,13 +27,14 @@ public class Player_Body : MonoBehaviour {
 	float velocityXSmoothing;
 
 	//private checks
-	bool _canDoubleJump;
-	bool jumpHeldDown = false;
+	bool canDoubleJump;
+	bool isDoubleJumping;
+	bool isJumping;
 	public	bool controlled;
 	bool eyeFlip;
 	bool bouncing;
+	public Vector2 directionalInput;
 	
-
 	//IOS DEPENDENT VARIABLES
 	#if UNITY_IOS
 	public bool jumping = false;
@@ -64,29 +61,43 @@ public class Player_Body : MonoBehaviour {
 		bouncing = false;
 	}
 	
-	// Update is called once per frame
+	public void SetDirectionalInput(Vector2 input) {
+		directionalInput = input;
+	}
 
+	public void OnJumpInputDown() {
+		Debug.Log("Should be jumping");
+		if(controller.collisions.below)
+		{
+			Debug.Log("jumping now");
+			velocity.y = maxJumpVelocity;
+			isDoubleJumping = false;
+			isJumping = true;
+		}
+		if(canDoubleJump && !controller.collisions.below && !isDoubleJumping)
+		{
+			velocity.y = maxJumpVelocity * 0.75f;
+			isDoubleJumping = true;
+		}
+	}
+
+	public void OnJumpInputUp() {
+		if(velocity.y > minJumpVelocity)
+		{
+			velocity.y = minJumpVelocity;
+		}
+	}
+
+	// Update is called once per frame
 	void Update () {
 		if(controlled)
 		{
-			if(controller.collisions.below || controller.collisions.above)
+			if((controller.collisions.below || controller.collisions.above) && !isJumping)
 			{
 				velocity.y = 0;
-				if(controller.collisions.below)
-				{
-					_canDoubleJump = true;
-				}
+				canDoubleJump = true;
 			}
 			
-			#if UNITY_STANDALONE_WIN
-			Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-			#endif
-
-			#if UNITY_IOS
-			int left = b_Left.Pressed? -1 : 0;
-			int right = b_Right.Pressed? 1: 0;
-			Vector2 input = new Vector2(left + right, 0);
-			#endif
 
 			if(bouncing)
 			{
@@ -95,81 +106,29 @@ public class Player_Body : MonoBehaviour {
 				bounceHeight = 0;
 			}
 
-			//***********************IOS JUMPING************************* NEEDS TO BE FIXED FOR HELD JUMPS
-			#if UNITY_IOS
-			//Handles ios jumping
-			if(b_Jump.Pressed) //if button is pressed
-			{
-				if(!jumping) // if character is not already jumping
-				{
-					if(controller.collisions.below) // if character is grounded
-					{
-						print("long boi");
-						velocity.y = maxJumpVelocity;
-						jumping = true;	
-					}
-					else
-					{
-						print("2nd jump");
-						velocity.y = 1.25f * minJumpVelocity;
-						_canDoubleJump = false;	
-					}
-				}
-			}
-
-			//Short ios jump
-			if(!b_Jump.Pressed && velocity.y > 0.1f)
-			{
-				print("smol jump");
-				if(velocity.y> minJumpVelocity){
-					velocity.y = minJumpVelocity;
-				}
-				jumping = false;
-			}
-
-			//***********************WINDOWS JUMPING*************************
-			#elif UNITY_STANDALONE_WIN
-			//Handles jumping
-			if(Input.GetButtonDown("Vertical") && _canDoubleJump)
-			{
-				if(controller.collisions.below)
-				{
-					velocity.y = maxJumpVelocity;	
-				}
-				else
-				{
-					velocity.y = 1.25f * minJumpVelocity;
-					_canDoubleJump = false;	
-				}
-			}
-
-			//Short jump
-			if(Input.GetButtonUp("Vertical"))
-			{
-				if(velocity.y> minJumpVelocity){
-					velocity.y = minJumpVelocity;
-				}
-			}
-			#endif
-
 			//Horizontal Movement
-			float targetVelocityX = input.x * moveSpeed;
+			float targetVelocityX = directionalInput.x * moveSpeed;
 			velocity.x = Mathf.SmoothDamp(velocity.x,targetVelocityX,ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 			if(velocity.y < 0)
 			{
 				velocity.y += gravity * Time.deltaTime;
 				}
 			velocity.y += gravity * Time.deltaTime;
-			//controller.Move( velocity  * Time.deltaTime);
 
 			//eye movement
 			eyeFlip = (velocity.x > -0.1)? false : true;
 			eyes.flipX = eyeFlip;
+			
 		}
 	}
 
 	private void FixedUpdate() {
 		controller.Move(velocity * Time.deltaTime);
+		if(isJumping)
+			{
+				isJumping = false;
+			}
+		
 	}
 
 	 public void Kill()
@@ -194,14 +153,6 @@ public class Player_Body : MonoBehaviour {
 	public bool GetControlled(){
 		return this.controlled;
 	}
-	public void SetButtons(TouchButton j, TouchButton l, TouchButton r) {
-		{
-			this.b_Jump = j;
-			this.b_Left = l;
-			this.b_Right = r;
-		}
-	}
-
 	IEnumerator SelfDestruct()
 	{
 		Debug.Log ("Destory");

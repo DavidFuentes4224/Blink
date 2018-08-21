@@ -12,9 +12,6 @@ public class FollowCamera : MonoBehaviour {
     public float verticalBound = 2;
 
     public Player player;
-
-    float tarPosX = 0;
-    float tarPosY = 0;
     public float speed;
 	
 	// Update is called once per frame

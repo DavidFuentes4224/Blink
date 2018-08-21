@@ -9,7 +9,6 @@ public class Button : Key {
 	public Transform buttonSprite;
 	public LayerMask collisionMask;
 	float verticalRaySpacing;
-	public Door door;
 	Collider2D  colliderBody;
 
 	private void Start() {
@@ -21,12 +20,12 @@ public class Button : Key {
 		if(isPressed)
 		{
 			buttonSprite.transform.position = this.transform.position;
-			door.Unlock();
+			obj.Activate();
 		}
 		else
 		{
 			buttonSprite.transform.position = this.transform.position + new Vector3(0,0.125f,0);
-			door.Lock();
+			obj.Deactivate();
 		}
 		Vector2 rayOrigin = new Vector2(colliderBody.bounds.min.x,transform.position.y);
 		for(int i = 0; i < 4; i++)

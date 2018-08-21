@@ -53,6 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemies\Boss\Boss_1.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Boss\FallingNumber.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Laser.cs" />
      <Compile Include="Assets\Scripts\Enemies\Rocket.cs" />
@@ -60,12 +62,18 @@
      <Compile Include="Assets\Scripts\Objects\Button.cs" />
      <Compile Include="Assets\Scripts\Objects\Door.cs" />
      <Compile Include="Assets\Scripts\Objects\Key.cs" />
+     <Compile Include="Assets\Scripts\Objects\SlideDoor.cs" />
+     <Compile Include="Assets\Scripts\Player\InputManager.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Body.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Controller.cs" />
+     <Compile Include="Assets\Scripts\Utilities\ActivateObject.cs" />
      <Compile Include="Assets\Scripts\Utilities\FollowCamera.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Launcher.cs" />
      <Compile Include="Assets\Scripts\Utilities\Level.cs" />
      <Compile Include="Assets\Scripts\Utilities\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\Utilities\ObjSlider.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Spawner.cs" />
      <Compile Include="Assets\Scripts\Utilities\TouchButton.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>F:/Side Bish/Blink of an Eye/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

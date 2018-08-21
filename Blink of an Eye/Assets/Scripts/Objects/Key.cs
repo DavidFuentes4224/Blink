@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Key : MonoBehaviour {
-	public int DoorNumber;
+	public ActivateObject obj;
 }
